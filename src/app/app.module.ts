@@ -7,10 +7,15 @@ import { NgbHighlight, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
 import { DecimalPipe } from '@angular/common';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ApiDataComponent } from './api-data/api-data.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SidebarComponent,
+    ApiDataComponent
   ],
   imports: [
     BrowserModule,
@@ -20,6 +25,7 @@ import { DecimalPipe } from '@angular/common';
     AsyncPipe,
     ReactiveFormsModule, 
     NgbHighlight,
+    HttpClientModule
   ],
   providers: [DecimalPipe],
   bootstrap: [AppComponent]

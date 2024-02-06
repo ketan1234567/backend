@@ -1,0 +1,73 @@
+
+<div class="container ">
+    <div class="row">
+      <div class="col-sm-12">
+  <br>
+        <h1 style="background-color: aliceblue; text-align: center;">We Can Integrate Third Part Package NewArticles</h1>
+        <br>
+
+        
+        
+        <form style="margin-left: 400px;">
+          <div class="mb-3 row">
+            <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Full text search:</label>
+            <div class="col-xs-3 col-sm-auto">
+              <input id="table-filtering-search" class="form-control" type="text" [formControl]="filter" placeholder="Search...">
+
+            </div>
+          </div>
+        </form>
+        <br><br>
+        
+        <table class="table table-striped">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Author</th>
+              <th scope="col">title</th>
+              <th scope="col">description</th>
+              <th scope="col">publishedAt</th>
+              <th scope="col">content</th>
+              <th scope="col">Image</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <ng-container *ngIf="MainData && MainData.length > 0; else noData">
+                <tr *ngFor="let country of MainData">
+                  <td>{{ country.source.name }}</td>
+                  <td>{{ country.author }}</td>
+                  <td>{{ country.title }}</td>
+                  <td>{{ country.description }}</td>
+                  <td>{{ country.publishedAt }}</td>
+                  <td>{{ country.content }}</td>
+                  <td>
+                    <img [src]="country.urlToImage" alt="API Image" width="100px">
+                
+                </td>
+                  <!-- Display other properties of country as needed -->
+                </tr>
+              </ng-container>
+              <ng-template #noData>
+                <tr>
+                  <td colspan="2" style="text-align: center">No data found</td>
+                </tr>
+              </ng-template>
+        
+              
+              
+           
+          </tbody>
+        </table>
+   
+
+   
+      </div>
+  
+  
+      
+
+      
+    </div>
+  
+  </div>

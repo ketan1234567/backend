@@ -1,0 +1,128 @@
+<div class="container ">
+    <div class="row">
+        <div class="col-sm-12">
+            <br>
+            <h1 style="background-color: aliceblue; text-align: center;">We Can Integrate Third Part Package NewArticles
+            </h1>
+            <br>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add data
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-lg-6 col-sm-6">
+                                <form [formGroup]="reactiveForm" (ngSubmit)="adduser()">
+                                    <div class="mb-4"><label for="add-book">Add FirstName</label>
+                                        <input type="text" class="form-control" id="add-book" formControlName="firstName"
+                                            placeholder="firstName">
+                                        <!-- <label *ngIf="reactiveForm.get('author')?.invalid && processValidation" class="error">Author is required</label> -->
+                                    </div>
+                                    <div class="mb-4"><label for="add-book">Add LastName</label>
+                                        <input type="text" class="form-control" id="add-book" formControlName="lastName"
+                                            placeholder="lastName">
+                                        <!-- <label *ngIf="reactiveForm.get('author')?.invalid && processValidation" class="error">Author is required</label> -->
+                                    </div>
+                                    <div class="mb-4"><label for="add-book">Email</label>
+                                        <input type="text" class="form-control" id="add-book" formControlName="email"
+                                            placeholder="Email">
+                                        <!-- <label *ngIf="reactiveForm.get('author')?.invalid && processValidation" class="error">Author is required</label> -->
+                                    </div>
+                                    <div class="mb-4"><label for="add-book">Phone</label>
+                                        <input type="text" class="form-control" id="add-book" formControlName="Phone"
+                                            placeholder="Phone">
+                                        <!-- <label *ngIf="reactiveForm.get('author')?.invalid && processValidation" class="error">Author is required</label> -->
+                                    </div>
+                                    <div class="mb-4"><label for="add-book">Address</label>
+                                        <input type="text" class="form-control" id="add-book" formControlName="Address"
+                                            placeholder="Address">
+                                        <!-- <label *ngIf="reactiveForm.get('author')?.invalid && processValidation" class="error">Author is required</label> -->
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="btn btn-primary" type="submit">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+              
+                    </div>
+                </div>
+            </div>
+
+
+
+            <form style="margin-left: 400px;">
+                <div class="mb-3 row">
+                    <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Full text
+                        search:</label>
+                    <div class="col-xs-3 col-sm-auto">
+                        <!-- <input id="table-filtering-search" class="form-control" type="text" [formControl]="filter" placeholder="Search..."> -->
+
+                    </div>
+                </div>
+            </form>
+            <br><br>
+
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">FirstName</th>
+                        <th scope="col">lastName</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Actions</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <ng-container *ngIf="MainData && MainData.length > 0; else noData">
+                        <tr *ngFor="let country of MainData">
+                            <td>{{ country.id }}</td>
+                            <td>{{ country.firstName }}</td>
+                            <td>{{ country.lastName }}</td>
+                            <td>{{ country.email }}</td>
+                            <td>{{ country.Phone }}</td>
+                            <td>{{ country.Address }}</td>
+                            <!-- Display other properties of country as needed -->
+                        </tr>
+                    </ng-container>
+                    <ng-template #noData>
+                        <tr>
+                            <td colspan="2" style="text-align: center">No data found</td>
+                        </tr>
+                    </ng-template>
+
+
+
+
+                </tbody>
+            </table>
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+</div>

@@ -1,0 +1,39 @@
+ <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Author</th>
+            <th scope="col">title</th>
+            <th scope="col">description</th>
+            <th scope="col">publishedAt</th>
+            <th scope="col">content</th>
+            <th scope="col">Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (let country of MainData track country.name; let i = $index) {
+            <tr>
+              <th scope="row">{{ i + 1 }}</th>
+              <td>
+                <img
+                  [src]="country.urlToImage"
+                  [alt]="country.name"
+                  class="me-2"
+                  style="width: 20px"
+                />
+                <ngb-highlight [result]="country.source.name" [term]="filter.value" />
+              </td>
+              <td><ngb-highlight [result]="country.author " [term]="filter.value" /></td>
+              <td><ngb-highlight [result]="country.title " [term]="filter.value" /></td>
+              <td><ngb-highlight [result]="country.description  " [term]="filter.value" /></td>
+              <td><ngb-highlight [result]="country.publishedAt  " [term]="filter.value" /></td>
+              <td><ngb-highlight [result]="country.content  " [term]="filter.value" /></td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="4" style="text-align: center">No countries found</td>
+            </tr>
+          }
+        </tbody>
+      </table>

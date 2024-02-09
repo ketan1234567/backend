@@ -22,7 +22,7 @@
         <table class="table table-striped">
           <thead class="table-dark">
             <tr>
-              <th scope="col">Name</th>
+              <th scope="col">Type Of News</th>
               <th scope="col">Author</th>
               <th scope="col">title</th>
               <th scope="col">description</th>
@@ -39,7 +39,11 @@
                   <td>{{ country.author }}</td>
                   <td>{{ country.title }}</td>
                   <td>{{ country.description }}</td>
-                  <td>{{ country.publishedAt }}</td>
+                  <td>
+                  
+                    {{ country.publishedAt | date: format }}
+
+                  </td>
                   <td>{{ country.content }}</td>
                   <td>
                     <img [src]="country.urlToImage" alt="API Image" width="100px">

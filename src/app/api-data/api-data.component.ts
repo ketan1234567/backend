@@ -57,6 +57,8 @@ function search(text: string, pipe: PipeTransform): Country[] {
   styleUrl: './api-data.component.scss'
 })
 export class ApiDataComponent {
+
+	format: string = 'dd-MM-YYYY HH:mm:ss';
   MainData: any[];
   filter = new FormControl('')
 

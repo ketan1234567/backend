@@ -7,24 +7,29 @@
             <br>
 
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" #openUp data-bs-target="#exampleModal" >
                 Add data
             </button>
 
             <!-- Modal -->
+
+          
+
+
+
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal"  aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="col-lg-6 col-sm-6">
-                                <form [formGroup]="reactiveForm" (ngSubmit)="adduser()">
+                                <form [formGroup]="reactiveForm" (ngSubmit)="adduser()"  >
                                     <div class="mb-4"><label for="add-book">Add FirstName</label>
-                                        <input type="text" class="form-control" id="add-book" formControlName="firstName"
+                                        <input type="text" class="form-control" id="add-book" required=""  formControlName="firstName"
                                             placeholder="firstName">
                                         <!-- <label *ngIf="reactiveForm.get('author')?.invalid && processValidation" class="error">Author is required</label> -->
                                     </div>
@@ -50,8 +55,11 @@
                                     </div>
 
                                     <div class="modal-footer">
+                                        <button type="submit" (click)=" onSubmit('Register')">Register</button>
+                                        <button type="button" (click)=" onSubmit('Updated')">Updated</button>
 
-                                        <button type="button" class="btn btn-primary" type="submit">Submit</button>
+                                        <!-- <button type="button" class="btn btn-primary" type="submit">Submit</button>
+                                        <button type="button" class="btn btn-primary" type="submit" (click)="$event.preventDefault();UpdatecategoryForm()">Update</button> -->
                                     </div>
                                 </form>
                             </div>
@@ -99,6 +107,10 @@
                             <td>{{ country.Phone }}</td>
                             <td>{{ country.Address }}</td>
                             <!-- Display other properties of country as needed -->
+                            <td>
+                                <button type="button" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onEditUser(country.id)">Edit</button> &nbsp;
+                                <button type="button" class="btn btn-danger">Delete</button>
+                            </td>
                         </tr>
                     </ng-container>
                     <ng-template #noData>

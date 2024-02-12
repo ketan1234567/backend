@@ -8,11 +8,7 @@ export class TestData implements InMemoryDbService{
                 { id: 103, firstName: 'hitesh',lastName:"rawat",   email: 'hitesh945@gmail.com',Phone: '9970166981',Address: 'sai vihar udgir'},
                 { id: 104, firstName: 'Rajshree',lastName:"fgrae", email: 'Rajshree954@gmail.com',Phone: '9970166981',Address: 'sai vihar udgir'},
                 { id: 105, firstName: 'snehal', lastName:"bhosle",  email: 'snehal5432@gmail.com',Phone: '9970166981',Address: 'sai vihar udgir'},
-                { id: 106, firstName: 'Raj',   lastName:"ingle",   email: 'Raj305@gmail.com',Phone: '9970166981',Address: 'sai vihar udgir'},
-                { id: 107, firstName: 'vivek',  lastName:"deshmukh",  email: 'vivek506@gmail.com',Phone: '9970166981',Address: 'sai vihar udgir'},
-                { id: 108, firstName: 'Rajat',   lastName:"sharam", email: 'rajat879@gmail.com',Phone: '9970166981',Address: 'sai vihar udgir'},
-                { id: 109, firstName: 'suraj',  lastName:"shide",  email: 'suraj876@gmail.com',Phone: '9970166981',Address: 'sai vihar udgir'},
-                { id: 1010, firstName: 'Narendra',lastName:"sharam",email: 'Narendra905@gmail.com',Phone: '9970166981',Address: 'sai vihar udgir'},
+               
             
         ];
 

@@ -34,7 +34,7 @@ import { TestData } from './test-data';
     NgbHighlight,
     HttpClientModule,
     ReactiveFormsModule,
-    InMemoryWebApiModule.forRoot(TestData, { delay: 1000, passThruUnknownUrl: true }),
+   InMemoryWebApiModule.forRoot(TestData, { delay: 1000, passThruUnknownUrl: true }),
 
     
   ],

@@ -14,7 +14,15 @@
             <!-- Modal -->
 
           
-
+            <form style="margin-left: 400px;">
+                <div class="mb-3 row">
+                  <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Full text search:</label>
+                  <div class="col-xs-3 col-sm-auto">
+                    <input id="table-filtering-search" class="form-control" type="text" [formControl]="filter" placeholder="Search...">
+      
+                  </div>
+                </div>
+              </form>
 
 
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -22,12 +30,12 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Register Data</h1>
                             <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal"  aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="col-lg-6 col-sm-6">
-                                <form [formGroup]="reactiveForm" (ngSubmit)="adduser()"  >
+                                <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
                                     <div class="mb-4"><label for="add-book">Add FirstName</label>
                                         <input type="text" class="form-control" id="add-book" required=""  formControlName="firstName"
                                             placeholder="firstName">
@@ -55,11 +63,8 @@
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="submit" (click)=" onSubmit('Register')">Register</button>
-                                        <button type="button" (click)=" onSubmit('Updated')">Updated</button>
-
-                                        <!-- <button type="button" class="btn btn-primary" type="submit">Submit</button>
-                                        <button type="button" class="btn btn-primary" type="submit" (click)="$event.preventDefault();UpdatecategoryForm()">Update</button> -->
+                                        <button *ngIf="!isEditMode" type="submit" class="btn btn-primary">Register</button>
+                                        <button *ngIf="isEditMode" type="submit" class="btn btn-primary">Update</button>
                                     </div>
                                 </form>
                             </div>
@@ -71,16 +76,6 @@
 
 
 
-            <form style="margin-left: 400px;">
-                <div class="mb-3 row">
-                    <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Full text
-                        search:</label>
-                    <div class="col-xs-3 col-sm-auto">
-                        <!-- <input id="table-filtering-search" class="form-control" type="text" [formControl]="filter" placeholder="Search..."> -->
-
-                    </div>
-                </div>
-            </form>
             <br><br>
 
             <table class="table table-striped">
@@ -109,7 +104,7 @@
                             <!-- Display other properties of country as needed -->
                             <td>
                                 <button type="button" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onEditUser(country.id)">Edit</button> &nbsp;
-                                <button type="button" class="btn btn-danger">Delete</button>
+                                <button type="button" class="btn btn-danger" (click)="onDelete(country.id)">Delete</button>
                             </td>
                         </tr>
                     </ng-container>

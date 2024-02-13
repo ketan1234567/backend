@@ -38,4 +38,9 @@ apiurl="https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey
         })
       );
       }
+
+      deleteItem(id: any): Observable<any> {
+        const url = `${this.userapi}/${id}`;
+        return this._Http.delete(url);
+      }
     }

@@ -138,6 +138,8 @@ onSubmit() {
                   Swal.fire({ text: "Error updating user. Please try again later.", icon: 'error' });
               }
           );
+
+          
       } else {
           // Handle registration logic
           this._services.SaveUser(formData).subscribe(
@@ -162,7 +164,10 @@ onSubmit() {
       console.log("Form is invalid");
       Swal.fire({ text: "Please fill in all required fields", icon: 'error' });
   }
+
+
 }
+
 onDelete(id: any) {
   Swal.fire({
     title: 'Are you sure want to remove?',

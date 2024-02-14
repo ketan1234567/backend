@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbHighlight, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
 import { DecimalPipe } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { CurdOperationComponent } from './curd-operation/curd-operation.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { TestData } from './test-data';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TestData } from './test-data';
     SidebarComponent,
     ApiDataComponent,
     HomeComponent,
-    CurdOperationComponent
+    CurdOperationComponent,
+    LoginComponent
   ],
   imports: [
     //InMemoryWebApiModule.forRoot(TestData),
@@ -34,7 +36,9 @@ import { TestData } from './test-data';
     NgbHighlight,
     HttpClientModule,
     ReactiveFormsModule,
-   InMemoryWebApiModule.forRoot(TestData, { delay: 1000, passThruUnknownUrl: true }),
+    FormsModule,
+    BrowserAnimationsModule,
+   InMemoryWebApiModule.forRoot(TestData, { delay: 2000, passThruUnknownUrl: true }),
 
     
   ],

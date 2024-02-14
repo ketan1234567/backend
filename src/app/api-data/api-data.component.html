@@ -44,9 +44,9 @@
                     {{ country.publishedAt | date: format }}
 
                   </td>
-                  <td>{{ country.content }}</td>
+                  <td> <a [href]="country.url" >{{ country.content }}</a></td>
                   <td>
-                    <img [src]="country.urlToImage" alt="API Image" width="100px">
+                  <a [href]="country.url" ><img [src]="country.urlToImage" alt="API Image" width="100px"></a>
                 
                 </td>
                   <!-- Display other properties of country as needed -->

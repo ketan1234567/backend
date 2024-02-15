@@ -1,19 +1,18 @@
-<div class="container mt-5" style="background-color: skyblue; height: 200%;">
+<div class="container mt-5" style="background-color: rgb(91 160 193); height: 200%;">
     <div class="form">
       <form *ngIf="loginFormVisible" [formGroup]="loginForm" (ngSubmit)="onSubmitLoginForm()">
-        <input type="text" name="username" placeholder="Username" formControlName="username">
+        <input type="text" name="email" placeholder="Username" formControlName="email">
         <input type="password" name="password" placeholder="Password" formControlName="password">
-        <input type="password" name="password" placeholder="Role" formControlName="role">
+        <input type="password" name="role" placeholder="Role" formControlName="role">
         <button type="submit" class="btn">Login</button>
         <p class="message">Not registered? <a href="#" (click)="toggleForms($event)">Create an account</a></p>
       </form>
       <form *ngIf="registerFormVisible" [formGroup]="registerForm" (ngSubmit)="onSubmitRegisterForm()">
-        <input type="text" name="email" placeholder="FirstName" formControlName="firstName">
-        <input type="password" name="password" placeholder="LastName" formControlName="lastName">
+        <input type="text" name="firstName" placeholder="FirstName" formControlName="firstName">
+        <input type="text" name="lastName" placeholder="LastName" formControlName="lastName">
         <input type="text" name="email" placeholder="Email" formControlName="email">
-        <input type="password" name="password" placeholder="Password" formControlName="password">
-
-        <input type="text" name="role" placeholder="Role" formControlName="Role">
+        <input type="text" name="password" placeholder="Password" formControlName="password">
+        <input type="text" name="role" placeholder="Role" formControlName="role">
         <button type="submit" class="btn">Submit</button>
         <p class="message">Already registered? <a href="#" (click)="toggleForms($event)">Sign in</a></p>
       </form>

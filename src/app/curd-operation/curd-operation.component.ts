@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { OurServicesService } from '../our-services.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
@@ -14,12 +14,13 @@ export class CurdOperationComponent implements OnInit {
   MainData: any
   editUser: any
   EditById: any
- 
+  LocalVariable:any
+
   @ViewChild('closebutton') closebutton;
   @ViewChild('openbutton') openbutton;
   isEditMode: boolean = false;
   filter = new FormControl('')
-  constructor(private _services: OurServicesService, private _router: Router) { 
+  constructor(private _services: OurServicesService, private _router: Router ,private fb: FormBuilder) { 
 
 
 
@@ -36,7 +37,7 @@ export class CurdOperationComponent implements OnInit {
       this.MainData = result
       // this.adduser()
     })
-
+ this.userData()
 
   }
 
@@ -118,8 +119,61 @@ onEditUser(id: any) {
 }
 
 onSubmit() {
+  const formData = this.reactiveForm.value;
+
+  const storedData = localStorage.getItem('signUp');
+  const parsedData = JSON.parse(storedData);
+
+  // Update the values with new data
+  parsedData.firstName = formData.firstName; // Replace 'newFirstName' with the actual new first name
+  parsedData.lastName = formData.lastName;
+  parsedData.email = formData.email;
+     // Replace 'newLastName' with the actual new last name
+  // Update other properties as needed
+
+  // Convert the updated object back to a JSON string
+  const updatedData = JSON.stringify(parsedData);
+
+  // Store the updated data back into localStorage
+  localStorage.setItem('signUp', updatedData);
+
+  // Optional: Update LocalVariable if needed
+  // this.LocalVariable = parsedData;
+
+  console.log('User data updated successfully:', parsedData);
   if (this.reactiveForm.valid) {
       const formData = this.reactiveForm.value;
+
+      // const storedData = localStorage.getItem('signUp');
+      // const parsedData = JSON.parse(storedData);
+
+      // // Update the values with new data
+      // parsedData.firstName = formData.firstName; // Replace 'newFirstName' with the actual new first name
+      // parsedData.lastName = formData.lastName;
+      // parsedData.email = formData.email;
+      //    // Replace 'newLastName' with the actual new last name
+      // // Update other properties as needed
+
+      // // Convert the updated object back to a JSON string
+      // const updatedData = JSON.stringify(parsedData);
+
+      // // Store the updated data back into localStorage
+      // localStorage.setItem('signUp', updatedData);
+
+      // // Optional: Update LocalVariable if needed
+      // // this.LocalVariable = parsedData;
+
+      // console.log('User data updated successfully:', parsedData);
+
+
+
+
+
+
+
+
+
+
       if (this.isEditMode) {
           // Handle update logic
           this._services.UpdatedUser(formData).subscribe(
@@ -199,6 +253,59 @@ onDelete(id: any) {
       );
     }
   });
+}
+userData() {
+  const storedData = localStorage.getItem('signUp');
+
+  if (storedData) {
+    try {
+      const parsedData = JSON.parse(storedData);
+      const data = {
+        firstName: parsedData.firstName,
+        lastName: parsedData.lastName,
+        email: parsedData.email,
+        password: parsedData.password,
+        role: parsedData.role
+      };
+      this.LocalVariable = data;
+      console.log('User data retrieved from localStorage:', this.LocalVariable);
+    } catch (error) {
+      console.error('Error parsing user data from localStorage:', error);
+    }
+  } else {
+    console.warn('No user data found in localStorage');
+  }
+}
+
+OnUserEdit() {
+  const storedData = localStorage.getItem('signUp');
+
+  if (storedData) {
+    try {
+      const parsedData = JSON.parse(storedData);
+
+      // Initialize the form with the retrieved data
+      this.reactiveForm = this.fb.group({
+        id: [parsedData.id], // Include the id field if it's part of the expected structure
+        firstName: [parsedData.firstName, Validators.required],
+        lastName: [parsedData.lastName, Validators.required],
+        email: [parsedData.email, [Validators.required, Validators.email]],
+        Phone: [parsedData.Phone,],
+        Address: [parsedData.Address]
+      });
+
+      console.log('User data retrieved from localStorage:', parsedData);
+    } catch (error) {
+      console.error('Error parsing user data from localStorage:', error);
+    }
+  } else {
+    console.warn('No user data found in localStorage');
+  }
+}
+
+
+OnUserDelete(){
+
 }
 
 }

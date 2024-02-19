@@ -15,6 +15,7 @@ export class CurdOperationComponent implements OnInit {
   editUser: any
   EditById: any
   LocalVariable:any
+  checkIfDisabled:any
 
   @ViewChild('closebutton') closebutton;
   @ViewChild('openbutton') openbutton;
@@ -38,7 +39,12 @@ export class CurdOperationComponent implements OnInit {
       // this.adduser()
     })
  this.userData()
+ const storedData = localStorage.getItem('signUp');
 
+ const parsedData = JSON.parse(storedData);
+ const OurmainRole=parsedData.role
+ console.log(OurmainRole);
+ this.checkIfDisabled =OurmainRole
   }
 
   applyFilter(): void {
@@ -119,28 +125,28 @@ onEditUser(id: any) {
 }
 
 onSubmit() {
+  
   const formData = this.reactiveForm.value;
 
+  // Check if data exists in localStorage
   const storedData = localStorage.getItem('signUp');
-  const parsedData = JSON.parse(storedData);
 
-  // Update the values with new data
-  parsedData.firstName = formData.firstName; // Replace 'newFirstName' with the actual new first name
-  parsedData.lastName = formData.lastName;
-  parsedData.email = formData.email;
-     // Replace 'newLastName' with the actual new last name
-  // Update other properties as needed
+  if (storedData) {
+    const parsedData = JSON.parse(storedData);
 
-  // Convert the updated object back to a JSON string
-  const updatedData = JSON.stringify(parsedData);
+    // Update the values with new data
+    parsedData.firstName = formData.firstName;
+    parsedData.lastName = formData.lastName;
+    parsedData.email = formData.email;
 
-  // Store the updated data back into localStorage
-  localStorage.setItem('signUp', updatedData);
+    // Convert the updated object back to a JSON string
+    const updatedData = JSON.stringify(parsedData);
 
-  // Optional: Update LocalVariable if needed
-  // this.LocalVariable = parsedData;
+    // Store the updated data back into localStorage
+    localStorage.setItem('signUp', updatedData);
 
-  console.log('User data updated successfully:', parsedData);
+    console.log('User data updated successfully:', parsedData);
+  }
   if (this.reactiveForm.valid) {
       const formData = this.reactiveForm.value;
 
@@ -264,6 +270,8 @@ userData() {
         firstName: parsedData.firstName,
         lastName: parsedData.lastName,
         email: parsedData.email,
+        Phone: parsedData.Phone,
+        Address: parsedData.Address,
         password: parsedData.password,
         role: parsedData.role
       };
@@ -305,10 +313,26 @@ OnUserEdit() {
 
 
 OnUserDelete(){
-
+    // Remove item from localStorage
+    localStorage.removeItem('signUp');
+  
+    // Check if the item was successfully removed
+    if (!localStorage.getItem('signUp')) {
+      console.log("Logout_Function_Working");
+      //this.isLoggedIn = false; // Set isLoggedIn to false after logout
+      
+      // Navigate to the 'home' route and then reload the page
+      this._router.navigate(['/login']).then(() => {
+        // Reload the page to reflect logout changes
+        location.reload();
+      });
+    } else {
+      console.log("Logout_Function_Not_Working");
+    }
+  }
 }
 
-}
+
 
 
   

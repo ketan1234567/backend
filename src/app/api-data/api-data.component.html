@@ -34,7 +34,8 @@
           <tbody>
 
             <ng-container *ngIf="MainData && MainData.length > 0; else noData">
-                <tr *ngFor="let country of MainData">
+                <tr *ngFor="let country of MainData | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }; let i = index">
+
                   <td>{{ country.source.name }}</td>
                   <td>{{ country.author }}</td>
                   <td>{{ country.title }}</td>
@@ -65,7 +66,9 @@
         </table>
    
 
-   
+        <div class="d-flex justify-content-center">
+          <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+        </div>
       </div>
   
   

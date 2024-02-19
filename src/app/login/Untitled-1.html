@@ -7,20 +7,9 @@
             <br>
 
             <!-- Button trigger modal -->
-            <div *ngIf="LocalVariable?.role === 'admin' else out">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" #openUp data-bs-target="#exampleModal" >
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" #openUp data-bs-target="#exampleModal" >
                 Add data
             </button>
-            
-          </div>
-            <ng-template #out>
-              <button type="button"[disabled]="checkIfDisabled==='user'" class="btn btn-primary" data-bs-toggle="modal" #openUp data-bs-target="#exampleModal" >
-                Add data
-            </button>
-            </ng-template>
-
-
-         
 
             <!-- Modal -->
 
@@ -93,7 +82,7 @@
 
 
 
-            <table class="table table-striped" *ngIf="LocalVariable?.role === 'user'; else otherTable">
+            <table class="table table-striped" *ngIf="LocalVariable?.role === 'admin'; else otherTable">
                 <!-- Table structure for admin -->
                 <thead class="table-dark">
                   <tr>
@@ -103,7 +92,6 @@
                     <th scope="col">Email</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Address</th>
-                    <th scope="col">Role</th>
                     <th scope="col">Actions</th>
                   </tr>
                 </thead>
@@ -118,8 +106,7 @@
                     <td>{{ LocalVariable?.Address }}</td>
                     <td>{{ LocalVariable?.role }}</td>
                     <td>
-                        <button type="button" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="OnUserEdit()">Edit</button> &nbsp;
-                        <button type="button" class="btn btn-danger" (click)="OnUserDelete()">Delete</button>
+                      <!-- Buttons for admin actions -->
                     </td>
                   </tr>
                 </tbody>
@@ -148,14 +135,9 @@
                         <td>{{ country.email }}</td>
                         <td>{{ country.Phone }}</td>
                         <td>{{ country.Address }}</td>
-                        <!--<ng-container *ngIf="LocalVariable?.role === 'user'">
-                          <td>{{ LocalVariable?.role }}</td>
-                        </ng-container>-->
-                        
-
+                        <!-- Display other properties of country as needed -->
                         <td>
-                            <button type="button" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onEditUser(country.id)">Edit</button> &nbsp;
-                            <button type="button" class="btn btn-danger" (click)="onDelete(country.id)">Delete</button>
+                          <!-- Buttons for regular user actions -->
                         </td>
                       </tr>
                     </ng-container>

@@ -15,6 +15,8 @@ import { CurdOperationComponent } from './curd-operation/curd-operation.componen
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { TestData } from './test-data';
 import { LoginComponent } from './login/login.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     BrowserAnimationsModule,
    InMemoryWebApiModule.forRoot(TestData, { delay: 2000, passThruUnknownUrl: true }),
+   NgxPaginationModule 
+
 
     
   ],

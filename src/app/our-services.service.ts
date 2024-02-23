@@ -6,7 +6,7 @@ import { Observable, catchError, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class OurServicesService {
-
+  checkIfDisabled:any
 
  ///apiurl= "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=810060449e7e4d15b1bbea2c3355b3c1";
  userapi = "http://localhost:4200/api/books";
@@ -43,5 +43,31 @@ apiurl="https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey
         const url = `${this.userapi}/${id}`;
         return this._Http.delete(url);
       }
+      
+      NoBackReturnSamePage(){
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+          history.go(1);
+        }
+      }
+
+      checkRoleFirst(){
+        const storedData = localStorage.getItem('signUp');
+
+        const parsedData = JSON.parse(storedData);
+        const OurmainRole = parsedData.role
+        console.log(OurmainRole);
+
+        if(storedData==""){
+     console.log("this is empty data");
+      }else{
+        console.log("This  is login user");
+        
+
+      }
+
+
+
     }
+  }
     

@@ -3,6 +3,7 @@ import { Component, PipeTransform } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, debounceTime, distinctUntilChanged, map, startWith } from 'rxjs';
 import { OurServicesService } from '../our-services.service';
+import { Route, Router } from '@angular/router';
 
 
 interface Country {
@@ -32,7 +33,7 @@ function search(text: string, pipe: PipeTransform): Country[] {
   styleUrl: './api-data.component.scss'
 })
 export class ApiDataComponent {
-
+  LocalVariable:any
 	currentPage: number = 1; // Current page number
   itemsPerPage: number = 5; // Display 5 records per page
 
@@ -40,12 +41,13 @@ export class ApiDataComponent {
   MainData: any[];
   filter = new FormControl('')
 
-	constructor(pipe: DecimalPipe,private _services:OurServicesService) {
+	constructor(pipe: DecimalPipe,private _services:OurServicesService,private _router:Router) {
     this.filter.valueChanges.pipe(
       debounceTime(300), // Wait for 300ms after the user stops typing
       distinctUntilChanged() // Only emit if the filter value has changed
     ).subscribe(() => {
       this.applyFilter();
+    
     });
 	
 
@@ -56,7 +58,7 @@ export class ApiDataComponent {
       console.log(result.articles);
       this.MainData = result.articles;
     });
-  
+this.userData()
 
   }
   
@@ -73,6 +75,22 @@ export class ApiDataComponent {
   }
   
   
-  
+  userData() {
+    const storedData = localStorage.getItem('signUp');
+
+    if (storedData) {
+      try {
+        const parsedData = JSON.parse(storedData);
+
+        this.LocalVariable = parsedData;
+        console.log('User data retrieved from localStorage:',);
+      } catch (error) {
+        console.error('Error parsing user data from localStorage:', error);
+      }
+    } else {
+      this._router.navigateByUrl('login')
+      console.warn('No user data found in localStorage');
+    }
+  }
 
 }

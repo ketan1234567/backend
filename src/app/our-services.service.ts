@@ -6,27 +6,27 @@ import { Observable, catchError, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class OurServicesService {
-  checkIfDisabled:any
+  checkIfDisabled: any
 
- ///apiurl= "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=810060449e7e4d15b1bbea2c3355b3c1";
- userapi = "http://localhost:4200/api/books";
- userapit = "http://localhost:4200/api/books/";
+  ///apiurl= "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=810060449e7e4d15b1bbea2c3355b3c1";
+  userapi = "http://localhost:4200/api/books";
+  userapit = "http://localhost:4200/api/books/";
 
-apiurl="https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=97eb649a42914441ab8896fc208d42cd";
+  apiurl = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=97eb649a42914441ab8896fc208d42cd";
 
-  constructor(private _Http:HttpClient) { }
+  constructor(private _Http: HttpClient) { }
 
-  GetAllDataWether():Observable<any> {
+  GetAllDataWether(): Observable<any> {
     return this._Http.get<any>(this.apiurl)
   }
-  GetAlluserDetails():Observable<any>{
-    return  this._Http.get<any>(this.userapi)
+  GetAlluserDetails(): Observable<any> {
+    return this._Http.get<any>(this.userapi)
   }
-  SaveUser(data:any){
-    return  this._Http.post<any>(this.userapi,data)
+  SaveUser(data: any) {
+    return this._Http.post<any>(this.userapi, data)
   }
-  onEditByUser(id:any):Observable<any>{
-   return this._Http.get(this.userapi+"/"+id)
+  onEditByUser(id: any): Observable<any> {
+    return this._Http.get(this.userapi + "/" + id)
   }
   UpdatedUser(data23: any): Observable<any> {
     const userApiUrl = `${this.userapit}/${data23.id}`;
@@ -37,37 +37,38 @@ apiurl="https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey
           return throwError('Could not update user. Please try again later.'); // You can customize this error message
         })
       );
-      }
+  }
 
-      deleteItem(id: any): Observable<any> {
-        const url = `${this.userapi}/${id}`;
-        return this._Http.delete(url);
-      }
-      
-      NoBackReturnSamePage(){
-        history.pushState(null, null, location.href);
-        window.onpopstate = function () {
-          history.go(1);
-        }
-      }
+  deleteItem(id: any): Observable<any> {
+    const url = `${this.userapi}/${id}`;
+    return this._Http.delete(url);
+  }
 
-      checkRoleFirst(){
-        const storedData = localStorage.getItem('signUp');
+  NoBackReturnSamePage() {
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+      history.go(1);
+    }
+  }
 
-        const parsedData = JSON.parse(storedData);
-        const OurmainRole = parsedData.role
-        console.log(OurmainRole);
+  checkRoleFirst() {
+    const storedData = localStorage.getItem('signUp');
 
-        if(storedData==""){
-     console.log("this is empty data");
-      }else{
-        console.log("This  is login user");
-        
+    const parsedData = JSON.parse(storedData);
+    const OurmainRole = parsedData.role
+    console.log(OurmainRole);
 
-      }
-
+    if (storedData == "") {
+      console.log("this is empty data");
+    } else {
+      console.log("This  is login user");
 
 
     }
+
+
+
   }
-    
+
+}
+

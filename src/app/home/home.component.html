@@ -5,15 +5,54 @@
         <div class="card-header">Totally Users</div>
         <div class="card-body">
           <h5 class="card-title">All Users Count</h5>
-          <a routerLink="/curd_Operation"><p class="card-text">{{AlluserCount}}</p></a>
+
+
+          <div *ngIf=" (whoRole==='admin' || whoRole === 'user'); else loginMessage">
+            <a routerLink="/curd_Operation" *ngIf="whoRole==='admin'">
+              <p class="card-text">{{AllAdminCount}}</p>
+            </a>
+            <a routerLink="/curd_Operation"  *ngIf="whoRole==='user'">
+              <p class="card-text">1</p>
+            </a>
+          </div>
+          
+          <ng-template #loginMessage>
+            <a routerLink="/curd_Operation"><p class="card-text">0</p></a>
+          </ng-template>
+          
+
+
+
+          
         </div>
       </div>
 
       <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Totally News</div>
+        <div class="card-header">Totally News Count</div>
         <div class="card-body">
+
           <h5 class="card-title">Totally News Count  </h5>
-          <a routerLink="/api_data"><p class="card-text">{{articleLength}}</p></a>
+          <div *ngIf=" (whoRole==='admin' || whoRole === 'user'); else loginMessage">
+            <a routerLink="/curd_Operation" *ngIf="whoRole==='admin'">
+              <a routerLink="/api_data"><p class="card-text">{{articleLength}}</p></a>
+            </a>
+            <a routerLink="/curd_Operation"  *ngIf="whoRole==='user'">
+    
+              <a routerLink="/api_data"><p class="card-text">{{articleLength}}</p></a>
+            </a>
+          </div>
+          
+          <ng-template #loginMessage>
+            <a routerLink="/curd_Operation"><p class="card-text">0</p></a>
+          </ng-template>
+          
+
+
+
+
+
+   
+
         </div>
       </div>
 

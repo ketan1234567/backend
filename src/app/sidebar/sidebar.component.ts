@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sidebar',
@@ -44,11 +45,13 @@ export class SidebarComponent {
     if (!localStorage.getItem('signUp')) {
       console.log("Logout_Function_Working");
       this.isLoggedIn = false; // Set isLoggedIn to false after logout
-      
-      // Navigate to the 'home' route and then reload the page
-      this._router.navigate(['/login']).then(() => {
-        // Reload the page to reflect logout changes
-        location.reload();
+      Swal.fire({ text: "Successfully Logout", icon: 'success' })
+      .then((result) => {
+        // Navigate to the home page after successful login
+        this._router.navigate(['/login']).then(() => {
+          // Reload the page after navigating to the home route
+          location.reload();
+        });
       });
     } else {
       console.log("Logout_Function_Not_Working");

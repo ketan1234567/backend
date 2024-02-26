@@ -69,26 +69,29 @@ export class LoginComponent {
     // Handle login form submission
     if (this.loginForm.valid) {
       const storedData = localStorage.getItem('signUp');
-  
       if (storedData) {
         try {
           // Parse the JSON string back into an object
           const parsedData = JSON.parse(storedData);
-  
-          // Check if the entered credentials match the stored data
+          const data = this._router
           if (parsedData.email === this.loginForm.value.email &&
-              parsedData.password === this.loginForm.value.password &&
-              parsedData.role === this.loginForm.value.role) {
-            console.log("You have successfully logged in!");
-            // Navigate to the home page after successful login
-            this._router.navigate(['/home']).then(() => {
-              // Reload the page after navigating to the home route
-              location.reload();
+            parsedData.password === this.loginForm.value.password &&
+            parsedData.role === this.loginForm.value.role) {
+          console.log("You have successfully logged in!");
+        
+          Swal.fire({ text: "Successfully Login", icon: 'success' })
+            .then((result) => {
+              // Navigate to the home page after successful login
+              this._router.navigate(['/home']).then(() => {
+                // Reload the page after navigating to the home route
+                location.reload();
+              });
             });
-            return; // Exit the function to prevent further execution
-          } else {
-            console.log("Invalid credentials. Please try again.");
-          }
+        } else {
+          console.log("Invalid credentials. Please try again.");
+        }
+        
+        
         } catch (error) {
           console.error('Error parsing user data from localStorage:', error);
         }
@@ -119,9 +122,25 @@ export class LoginComponent {
         role: this.registerForm.value.role
       };
       const jsonData = JSON.stringify(data);
+
+
   
       // Save data to localStorage with a specific key
      const MainData= localStorage.setItem('signUp', jsonData);
+
+    
+     if (jsonData) {
+      const router = this._router;
+      Swal.fire({ text: "Successfully Saved", icon: 'success' })
+        .then(function (result) { router.navigate(['login']) });
+      this.ngOnInit();
+      this.registerForm.reset();
+    } else {
+      const router = this._router;
+      Swal.fire({ text: "Error", icon: 'error' })
+        .then(function (result) { router.navigate(['login']) });
+    }
+    
 
       console.log(MainData);
       

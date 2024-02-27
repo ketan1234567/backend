@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
   }
 
   userData() {
-    const storedData = localStorage.getItem('signUp');
+    const storedData = localStorage.getItem('userDetails');
     if (storedData) {
       try {
         const role = JSON.parse(storedData);

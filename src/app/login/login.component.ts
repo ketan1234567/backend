@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { OurServicesService } from '../our-services.service';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +34,7 @@ export class LoginComponent {
   registerFormVisible: boolean = false;
   isformsubmitted:any
 
-  constructor(private formBuilder: FormBuilder,private _router:Router) { }
+  constructor(private formBuilder: FormBuilder,private _router:Router,private _services:OurServicesService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -50,13 +51,15 @@ export class LoginComponent {
       password: ['', [Validators.required, Validators.maxLength(6)]],
       Phone: ['', [Validators.required,Validators.minLength(10)]],
       Address: ['', Validators.required],
-      role: ['', Validators.compose([Validators.required,Validators.minLength(4),Validators.maxLength(5)])]
+      role: ['', Validators.compose([Validators.required,Validators.minLength(4),Validators.maxLength(5)])],
+      isLoggedIn:'false'
     });
 
     history.pushState(null, null, location.href);
     window.onpopstate = function () {
       history.go(1);
     }
+ 
   }
 
   toggleForms(event: Event) {
@@ -67,20 +70,38 @@ export class LoginComponent {
   onSubmitLoginForm() {
     this.isformsubmitted=true;
     // Handle login form submission
+   // const formData = this.loginForm.value;
+     //console.log(this.loginForm.value);
+     
     if (this.loginForm.valid) {
-      const storedData = localStorage.getItem('signUp');
+      const storedData = localStorage.getItem('userDetails');
+
+
+    console.log(storedData);
+    
+
+
       if (storedData) {
         try {
           // Parse the JSON string back into an object
           const parsedData = JSON.parse(storedData);
           const data = this._router
-          if (parsedData.email === this.loginForm.value.email &&
-            parsedData.password === this.loginForm.value.password &&
+          if (parsedData.email === this.loginForm.value.email && parsedData.password === this.loginForm.value.password &&
             parsedData.role === this.loginForm.value.role) {
-          console.log("You have successfully logged in!");
+              console.log(parsedData.isLoggedIn);
+              parsedData.isLoggedIn=true;
+              console.log(parsedData.isLoggedIn);
+              // Convert the updated object back to a JSON string
+              const updatedData = JSON.stringify(parsedData);
         
+              // Store the updated data back into localStorage
+              localStorage.setItem('userDetails', updatedData);
+              
+          console.log("You have successfully logged in!");
+          parsedData.isLoggedIn=true;
           Swal.fire({ text: "Successfully Login", icon: 'success' })
             .then((result) => {
+            
               // Navigate to the home page after successful login
               this._router.navigate(['/home']).then(() => {
                 // Reload the page after navigating to the home route
@@ -103,14 +124,32 @@ export class LoginComponent {
   
       // Optionally, you might want to clear the form fields after an unsuccessful login attempt
       this.loginForm.reset();
+
     }
   }
   
 
   onSubmitRegisterForm() {
     this.isformsubmitted = true;
+
     // Handle register form submission
+
+    
     if (this.registerForm.valid) {
+      this._services.authLogin(this.registerForm.value)
+      if(this._services.authLogin){
+        const router = this._router;
+        Swal.fire({ text: "Successfully Saved", icon: 'success' })
+          .then(function (result) { router.navigate(['login']) });
+        this.ngOnInit();
+        this.registerForm.reset();
+      }else{
+        const router = this._router;
+        Swal.fire({ text: "Error", icon: 'error' })
+          .then(function (result) { router.navigate(['login']) });
+      }
+
+
       console.log(this.registerForm.value);
       const data = {
         firstName: this.registerForm.value.firstName,
@@ -126,7 +165,7 @@ export class LoginComponent {
 
   
       // Save data to localStorage with a specific key
-     const MainData= localStorage.setItem('signUp', jsonData);
+     //const MainData= localStorage.setItem('signUp', jsonData);
 
     
      if (jsonData) {
@@ -142,7 +181,7 @@ export class LoginComponent {
     }
     
 
-      console.log(MainData);
+      //console.log(MainData);
       
   
       //console.log('Register form submitted:', this.registerForm.value.email);

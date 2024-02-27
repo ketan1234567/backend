@@ -39,12 +39,14 @@ export class CurdOperationComponent implements OnInit {
       // this.adduser()
     })
     this.userData()
-    const storedData = localStorage.getItem('signUp');
+    const storedData = localStorage.getItem('userDetails');
 
     const parsedData = JSON.parse(storedData);
     const OurmainRole = parsedData.role
     console.log(OurmainRole);
     this.checkIfDisabled = OurmainRole
+
+
  
   }
 
@@ -130,7 +132,7 @@ export class CurdOperationComponent implements OnInit {
     const formData = this.reactiveForm.value;
 
     // Check if data exists in localStorage
-    const storedData = localStorage.getItem('signUp');
+    const storedData = localStorage.getItem('userDetails');
 
     if (storedData) {
       const parsedData = JSON.parse(storedData);
@@ -144,7 +146,7 @@ export class CurdOperationComponent implements OnInit {
       const updatedData = JSON.stringify(parsedData);
 
       // Store the updated data back into localStorage
-      localStorage.setItem('signUp', updatedData);
+      localStorage.setItem('userDetails', updatedData);
 
       console.log('User data updated successfully:', parsedData);
     }
@@ -262,7 +264,7 @@ export class CurdOperationComponent implements OnInit {
     });
   }
   userData() {
-    const storedData = localStorage.getItem('signUp');
+    const storedData = localStorage.getItem('userDetails');
 
     if (storedData) {
       try {
@@ -288,7 +290,7 @@ export class CurdOperationComponent implements OnInit {
   }
 
   OnUserEdit() {
-    const storedData = localStorage.getItem('signUp');
+    const storedData = localStorage.getItem('userDetails');
 
     if (storedData) {
       try {
@@ -316,10 +318,10 @@ export class CurdOperationComponent implements OnInit {
 
   OnUserDelete() {
     // Remove item from localStorage
-    localStorage.removeItem('signUp');
+    localStorage.removeItem('userDetails');
 
     // Check if the item was successfully removed
-    if (!localStorage.getItem('signUp')) {
+    if (!localStorage.getItem('userDetails')) {
       console.log("Logout_Function_Working");
       //this.isLoggedIn = false; // Set isLoggedIn to false after logout
 

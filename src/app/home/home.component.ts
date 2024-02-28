@@ -41,7 +41,9 @@ export class HomeComponent implements OnInit {
     if (storedData) {
       try {
         const role = JSON.parse(storedData);
-        if (role && role.role) {
+          //console.log(role.isLoggedIn);
+          
+        if (role && role.role && role.isLoggedIn===true) {
           this.whoRole = role.role;
           this.AllAdminCount = role.role.length;
           // Additional processing or error handling can be added here if needed

@@ -133,9 +133,13 @@ export class CurdOperationComponent implements OnInit {
 
     // Check if data exists in localStorage
     const storedData = localStorage.getItem('userDetails');
+    //const isLoggedIn = JSON.parse(storedData);
+  
+    
 
     if (storedData) {
       const parsedData = JSON.parse(storedData);
+    
 
       // Update the values with new data
       parsedData.firstName = formData.firstName;
@@ -225,6 +229,7 @@ export class CurdOperationComponent implements OnInit {
     } else {
       // Handle form validation errors if needed
       console.log("Form is invalid");
+      this._router.navigate(['login'])
       Swal.fire({ text: "Please fill in all required fields", icon: 'error' });
     }
 

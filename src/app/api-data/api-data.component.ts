@@ -77,10 +77,13 @@ this.userData()
   
   userData() {
     const storedData = localStorage.getItem('userDetails');
-
-    if (storedData) {
+    const isLoggedIn = JSON.parse(storedData);
+ //   console.log(isLoggedIn.isLoggedIn);
+    
+    if (storedData && isLoggedIn.isLoggedIn===true) {
       try {
         const parsedData = JSON.parse(storedData);
+
 
         this.LocalVariable = parsedData;
         console.log('User data retrieved from localStorage:',);

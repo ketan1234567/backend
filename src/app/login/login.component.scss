@@ -50,7 +50,7 @@ body{
   position: relative;
   z-index: 1;
   max-width: 350px;
-  margin:-50px 18px 27px;
+  margin:4px 18px 27px;
   padding: 45px;
   background: #FFFFFF;
 }
@@ -85,7 +85,7 @@ body{
   margin-bottom: 10px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   body {
     background-color: green;
   }
@@ -94,6 +94,8 @@ body{
     padding: 7% 6px 1px;
     width: 296px;
     margin-right: 30%;
+    overflow: hidden;
+  
   }
 
   .form{

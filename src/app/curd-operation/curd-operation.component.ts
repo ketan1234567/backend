@@ -33,11 +33,7 @@ export class CurdOperationComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this._services.GetAlluserDetails().subscribe((result) => {
-      console.log(result);
-      this.MainData = result
-      // this.adduser()
-    })
+   // this.checkdataIsExits()
     this.userData()
     const storedData = localStorage.getItem('userDetails');
 
@@ -46,6 +42,7 @@ export class CurdOperationComponent implements OnInit {
     console.log(OurmainRole);
     this.checkIfDisabled = OurmainRole
 
+//this.checkdataIsExits()
 
  
   }
@@ -59,6 +56,19 @@ export class CurdOperationComponent implements OnInit {
       (country.Phone || '').toLowerCase().includes(searchText) ||
       (country.Address || '').toLowerCase().includes(searchText)
     );
+  }
+
+  checkdataIsExits(){
+    const storedData = localStorage.getItem('userDetails');
+
+    const parsedData = JSON.parse(storedData);
+    console.log(parsedData.isLoggedIn);
+    
+    if(!parsedData.isLoggedIn==true){
+      this._router.navigate(['curd_Operation'])
+    }else{
+      this._router.navigate(['login'])
+    }
   }
 
 
@@ -270,10 +280,13 @@ export class CurdOperationComponent implements OnInit {
   }
   userData() {
     const storedData = localStorage.getItem('userDetails');
+    const parsedData = JSON.parse(storedData);
 
-    if (storedData) {
+    if (storedData && parsedData.isLoggedIn==true) {
       try {
         const parsedData = JSON.parse(storedData);
+   
+
         const data = {
           firstName: parsedData.firstName,
           lastName: parsedData.lastName,
@@ -289,7 +302,7 @@ export class CurdOperationComponent implements OnInit {
         console.error('Error parsing user data from localStorage:', error);
       }
     } else {
-      this._router.navigateByUrl('/login')
+      this._router.navigate(['/login'])
       console.warn('No user data found in localStorage');
     }
   }

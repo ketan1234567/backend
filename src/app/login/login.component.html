@@ -1,162 +1,177 @@
-<div class="container mt-5" style="background-color: rgb(91 160 193); height: 50%;">
-    <div class="form">
-      <form *ngIf="loginFormVisible" [formGroup]="loginForm" (ngSubmit)="onSubmitLoginForm()">
-        <input type="email"  placeholder="Username" formControlName="email">
-        <div *ngIf=" loginForm.get('email').invalid && isformsubmitted" class="error">
-          <div *ngIf="loginForm.get('email').hasError('required')">
-            email is required.
-          </div>
 
-          <div *ngIf="loginForm.get('email').hasError('pattern')">
-            Email must be a valid email address
-          </div>
+<div class="main">
 
- 
-        </div>
-
-
-
-
-        <input type="password" name="password" placeholder="Password" formControlName="password">
-
-        <div *ngIf="loginForm.get('password').invalid && (loginForm.get('password').touched || isformsubmitted)" class="error">
-          <div *ngIf="loginForm.get('password').hasError('required')">
-            Password is required.
-          </div>
-          <div *ngIf="loginForm.get('password').hasError('maxlength')">
-            Password must be at least 6 characters long.
-          </div>
-        </div>
-
-
-
-
-        <input type="text" placeholder="Role" formControlName="role">
-
-        <div *ngIf=" loginForm.get('role').invalid && isformsubmitted" class="error">
-          <div *ngIf="loginForm.get('role').hasError('required')">
-            Role is required.
-          </div>
-
-          <div *ngIf="loginForm.get('role').hasError('minlength')">
-          Role must be at least Four characters long.
-          </div>
-          <div *ngIf="loginForm.get('role').hasError('maxlength')">
-            Role must not  be at most five characters long.
-          </div>
-        </div>
-
-
-
-
-
-        <button type="submit" class="btn">Login</button>
-        <p class="message">Not registered? <a href="#" (click)="toggleForms($event)">Create an account</a></p>
-      </form>
-      <form *ngIf="registerFormVisible" [formGroup]="registerForm" (ngSubmit)="onSubmitRegisterForm()">
-        <input type="text"  placeholder="FirstName" formControlName="firstName" required>
-
-
-        <div *ngIf=" registerForm.get('firstName').invalid && isformsubmitted" class="error">
-          <div *ngIf="registerForm.get('firstName').hasError('required')">
-            FirstName is required.
-          </div>
-
-          <div *ngIf="registerForm.get('firstName').hasError('minlength')">
-            First Name must be at least three characters long.
-          </div>
-          <div *ngIf="registerForm.get('firstName').hasError('maxlength')">
-            First Name must be at most eight characters long.
-          </div>
-        </div>
-        
-        
-        <input type="text"  placeholder="LastName" formControlName="lastName" >
-        <div *ngIf=" registerForm.get('lastName').invalid && isformsubmitted" class="error">
-          <div *ngIf="registerForm.get('lastName').hasError('required')">
-            LastName is required.
-          </div>
-
-          <div *ngIf="registerForm.get('lastName').hasError('minlength')">
-            LastName must be at least three characters long.
-          </div>
-          <div *ngIf="registerForm.get('lastName').hasError('maxlength')">
-          LastName must be at most eight characters long.
-          </div>
-        </div>
-        <input type="email"  placeholder="Email" formControlName="email">
-
-        <div *ngIf=" registerForm.get('email').invalid && isformsubmitted" class="error">
-          <div *ngIf="registerForm.get('email').hasError('required')">
-            email is required.
-          </div>
-
-          <div *ngIf="registerForm.get('email').hasError('pattern')">
-            Email must be a valid email address
-          </div>
-
- 
-        </div>
-
-
-
-
-
-        <input type="password"  placeholder="Password" formControlName="password" >
-
-
-        <div *ngIf="registerForm.get('password').invalid && (registerForm.get('password').touched || isformsubmitted)" class="error">
-          <div *ngIf="registerForm.get('password').hasError('required')">
-            Password is required.
-          </div>
-          <div *ngIf="registerForm.get('password').hasError('maxlength')">
-            Password must be at least 6 characters long.
-          </div>
-        </div>
-        
-
-        <input type="text" name="Phone" placeholder="Phone" formControlName="Phone" >
-
-
-        <div *ngIf="registerForm.get('Phone').invalid && (registerForm.get('Phone').touched || isformsubmitted)" class="error">
-          <div *ngIf="registerForm.get('Phone').hasError('required')">
-            Phone is required.
-          </div>
-          <div *ngIf="registerForm.get('Phone').hasError('maxlength')">
-            Phone must be at least 10 characters long.
-          </div>
-        </div>
-        <input type="text" name="Address" placeholder="Address" formControlName="Address" required="">
-        <div *ngIf="registerForm.get('Address').invalid && (registerForm.get('Address').touched || isformsubmitted)" class="error">
-          <div *ngIf="registerForm.get('Address').hasError('required')">
-            Address is required.
-          </div>
-       
-        </div>
-      
-
-
-        <input type="text" name="role" placeholder="role" formControlName="role">
-
-        
-        <div *ngIf=" registerForm.get('role').invalid && isformsubmitted" class="error">
-          <div *ngIf="registerForm.get('role').hasError('required')">
-            Role is required.
-          </div>
-
-          <div *ngIf="registerForm.get('role').hasError('minlength')">
-          Role must be at least Four characters long.
-          </div>
-          <div *ngIf="registerForm.get('role').hasError('maxlength')">
-            Role must not  be at most five characters long.
-          </div>
-        </div>
-        
-
-
-        <button type="submit" class="btn">Submit</button>
-        <p class="message">Already registered? <a href="#" (click)="toggleForms($event)">Sign in</a></p>
-      </form>
-    </div>
-  </div>
+  <div class="container">
+    <div class="section-one">
   
+      <div class="main-form">
+        <div class="container mt-5" style="background-color: rgb(91 160 193); height: 50%;">
+          <div class="form">
+            <form *ngIf="loginFormVisible" [formGroup]="loginForm" (ngSubmit)="onSubmitLoginForm()">
+              <input type="email"  placeholder="Username" formControlName="email">
+              <div *ngIf=" loginForm.get('email').invalid && isformsubmitted" class="error">
+                <div *ngIf="loginForm.get('email').hasError('required')">
+                  email is required.
+                </div>
+      
+                <div *ngIf="loginForm.get('email').hasError('pattern')">
+                  Email must be a valid email address
+                </div>
+      
+       
+              </div>
+      
+      
+      
+      
+              <input type="password" name="password" placeholder="Password" formControlName="password">
+      
+              <div *ngIf="loginForm.get('password').invalid && (loginForm.get('password').touched || isformsubmitted)" class="error">
+                <div *ngIf="loginForm.get('password').hasError('required')">
+                  Password is required.
+                </div>
+                <div *ngIf="loginForm.get('password').hasError('maxlength')">
+                  Password must be at least 6 characters long.
+                </div>
+              </div>
+      
+      
+      
+      
+              <input type="text" placeholder="Role" formControlName="role">
+      
+              <div *ngIf=" loginForm.get('role').invalid && isformsubmitted" class="error">
+                <div *ngIf="loginForm.get('role').hasError('required')">
+                  Role is required.
+                </div>
+      
+                <div *ngIf="loginForm.get('role').hasError('minlength')">
+                Role must be at least Four characters long.
+                </div>
+                <div *ngIf="loginForm.get('role').hasError('maxlength')">
+                  Role must not  be at most five characters long.
+                </div>
+              </div>
+      
+      
+      
+      
+      
+              <button type="submit" class="btn">Login</button>
+              <p class="message">Not registered? <a href="#" (click)="toggleForms($event)">Create an account</a></p>
+            </form>
+            <form *ngIf="registerFormVisible" [formGroup]="registerForm" (ngSubmit)="onSubmitRegisterForm()">
+              <input type="text"  placeholder="FirstName" formControlName="firstName" required>
+      
+      
+              <div *ngIf=" registerForm.get('firstName').invalid && isformsubmitted" class="error">
+                <div *ngIf="registerForm.get('firstName').hasError('required')">
+                  FirstName is required.
+                </div>
+      
+                <div *ngIf="registerForm.get('firstName').hasError('minlength')">
+                  First Name must be at least three characters long.
+                </div>
+                <div *ngIf="registerForm.get('firstName').hasError('maxlength')">
+                  First Name must be at most eight characters long.
+                </div>
+              </div>
+              
+              
+              <input type="text"  placeholder="LastName" formControlName="lastName" >
+              <div *ngIf=" registerForm.get('lastName').invalid && isformsubmitted" class="error">
+                <div *ngIf="registerForm.get('lastName').hasError('required')">
+                  LastName is required.
+                </div>
+      
+                <div *ngIf="registerForm.get('lastName').hasError('minlength')">
+                  LastName must be at least three characters long.
+                </div>
+                <div *ngIf="registerForm.get('lastName').hasError('maxlength')">
+                LastName must be at most eight characters long.
+                </div>
+              </div>
+              <input type="email"  placeholder="Email" formControlName="email">
+      
+              <div *ngIf=" registerForm.get('email').invalid && isformsubmitted" class="error">
+                <div *ngIf="registerForm.get('email').hasError('required')">
+                  email is required.
+                </div>
+      
+                <div *ngIf="registerForm.get('email').hasError('pattern')">
+                  Email must be a valid email address
+                </div>
+      
+       
+              </div>
+      
+      
+      
+      
+      
+              <input type="password"  placeholder="Password" formControlName="password" >
+      
+      
+              <div *ngIf="registerForm.get('password').invalid && (registerForm.get('password').touched || isformsubmitted)" class="error">
+                <div *ngIf="registerForm.get('password').hasError('required')">
+                  Password is required.
+                </div>
+                <div *ngIf="registerForm.get('password').hasError('maxlength')">
+                  Password must be at least 6 characters long.
+                </div>
+              </div>
+              
+      
+              <input type="text" name="Phone" placeholder="Phone" formControlName="Phone" >
+      
+      
+              <div *ngIf="registerForm.get('Phone').invalid && (registerForm.get('Phone').touched || isformsubmitted)" class="error">
+                <div *ngIf="registerForm.get('Phone').hasError('required')">
+                  Phone is required.
+                </div>
+                <div *ngIf="registerForm.get('Phone').hasError('maxlength')">
+                  Phone must be at least 10 characters long.
+                </div>
+              </div>
+              <input type="text" name="Address" placeholder="Address" formControlName="Address" required="">
+              <div *ngIf="registerForm.get('Address').invalid && (registerForm.get('Address').touched || isformsubmitted)" class="error">
+                <div *ngIf="registerForm.get('Address').hasError('required')">
+                  Address is required.
+                </div>
+             
+              </div>
+            
+      
+      
+              <input type="text" name="role" placeholder="role" formControlName="role">
+      
+              
+              <div *ngIf=" registerForm.get('role').invalid && isformsubmitted" class="error">
+                <div *ngIf="registerForm.get('role').hasError('required')">
+                  Role is required.
+                </div>
+      
+                <div *ngIf="registerForm.get('role').hasError('minlength')">
+                Role must be at least Four characters long.
+                </div>
+                <div *ngIf="registerForm.get('role').hasError('maxlength')">
+                  Role must not  be at most five characters long.
+                </div>
+              </div>
+              
+      
+      
+              <button type="submit" class="btn">Submit</button>
+              <p class="message">Already registered? <a href="#" (click)="toggleForms($event)">Sign in</a></p>
+            </form>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  
+  
+  </div>
+
+</div>
+

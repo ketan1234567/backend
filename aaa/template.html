@@ -1,0 +1,896 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    
+	<title>How AI-powered phones are changing the modern workplace</title>
+	
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+	
+		<script src="DataCurlNodeApi/post_form_data.js"></script>
+		<!-- ICON -->
+	
+	<style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+</style>
+	<style>
+	
+	
+	.material-symbols-outlined {
+	  font-variation-settings:
+	  'FILL' 1,
+	  'wght' 400,
+	  'GRAD' 0,
+	  'opsz' 24
+	  
+	 
+	}
+	</style>
+	
+    <script>
+        $(document).ready(function () {
+            jQuery.validator.addMethod(
+                "email",
+                function (value, element) {
+                    // Regular expression for email validation
+                    return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
+                },
+                "Please enter a valid email address."
+            );
+
+            $("#lead-form").validate({
+			
+			submitHandler: function(form, event) {
+                    event.preventDefault(); // Prevent default form submission
+
+                    try {
+                        console.log(form);
+
+                        const data = Object.fromEntries(new FormData(form).entries());
+
+                        // Map data
+                        var mappedData = {};  
+						
+						mappedData['firstname'] = data["firstname"] || null;  
+						mappedData['Last Name'] = data["data[0]"] || null;
+						mappedData['email'] = data["data[1]"] || null;
+						mappedData['compnay'] = data["data[2]"] || null;
+						mappedData['company_size'] = data["data[3]"] || null;
+						mappedData['job_title'] = data["data[4]"] || null;	
+						mappedData['Phone'] = data["data[5]"] || null;	
+						mappedData['Country'] = data["data[6]"] || null;
+						mappedData['Cq_1'] = data["data[7]"] || null;	
+						mappedData['Opt'] = data["data[8]"] || null;							
+		
+
+                        
+                        
+
+                        var camp_id = "STORM-Zoom-Video-USA-DE66E1-1"; // CAMPID
+                        var endUrl = "https://resource.ciofirst.com/whitepaper/STORM-Zoom-Video-USA-DE66E1-1.pdf"; // END URL
+
+                        post_form_data(camp_id, mappedData, endUrl,function onComplete(res,error){
+							console.log("API RES:",res);
+							// Proceed with the form submission
+							form.submit();
+						}); // Call API
+
+                       
+                    } catch (error) {
+                        console.log(error);
+                    }       
+                },
+			
+			
+			
+                /*  rules: {
+                     color: "required"
+                 },
+                 messages: {
+                     color: "select atleast one color"
+                 }, */
+                errorPlacement: function (error, element) {
+                    if (element.attr("type") == "checkbox") {
+                        error.insertAfter(element.closest(".check-group"));
+                    } else {
+                        error.insertAfter(element);
+                    }
+                }
+            });
+
+        });</script>
+
+    <style>
+        
+
+        /*hero iamge*/
+
+        body {
+            background: #fafafa;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont,
+                'Segoe UI', Roboto, 'Helvetica Neue',
+                Ubuntu, Arial, sans-serif;
+        }
+		
+		.hero{
+		/* From https://css.glass */
+background: rgba(255, 255, 255, 0.09);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(1.5px);
+-webkit-backdrop-filter: blur(1.5px);
+border: 1px solid rgba(255, 255, 255, 0.94);
+		
+		}
+
+        
+
+        section {
+            padding: 3em 2em;
+        }
+
+        a {
+            color: #2073d9;
+			text-decoration:underline;
+        }
+
+       
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select,
+        textarea {
+
+
+			
+			border: 1px solid #9a9898;
+    outline: none;
+    background: rgba(gray, .2);
+  
+   padding: 10px 15px;
+    color: gray;
+    width: 100%;
+     box-shadow: inset 0px  0px 0px #d3d3d3; 
+	font-size: 14px;
+	border-radius:5px;
+        }
+
+
+        .error {
+            color: red;
+			padding-left:15px;
+			
+			 font-size: 12px;
+			 width: -webkit-fill-available;
+		
+        }
+
+        select.error {
+            background-color: white;
+            color:#757575;
+        }
+
+     
+
+
+        .logo {
+            width: 145px;
+        }
+
+        .company_logo {
+            float: left;
+            width: 197px;
+             
+        }
+
+        .divider {
+            height: 1px;
+            width: 100%;
+           
+
+        }
+		
+		.banner{
+	
+    background-image: url(wave-1.png), linear-gradient(#57c4b1,#ffeacf);
+    background-size: cover;
+    background-position: top;
+    background-color: #57c4b1;
+    padding: 12px;
+    color: white;
+	
+	
+		}
+		
+				.footer{
+	
+    background-image: url(wave-1.png), linear-gradient(#57c4b1,#ffeacf);
+    background-size: cover;
+    background-position: top;
+    background-color: #57c4b1;
+    
+    color: white;
+	
+	
+		}
+
+
+        .title {
+            font-size: 1.6em;
+            color: #000;
+        }
+
+
+        .thumbnail {
+            width: 50%;
+			 
+			box-shadow:  0px 1px 5px gray;
+			
+        }
+		
+		   .speaker {
+            width: 15%;
+			margin-top:10px;
+			float: left;
+			margin-right: 15px;
+        }
+
+        #lead-form {
+
+           
+           
+            border-radius: 10px;
+
+
+
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    flex-direction: column;
+    justify-content: center;
+    padding: 35px;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 1 0 80px rgba(0, 0, 0, 0.3);
+	
+	    background: rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(62.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    border: 1px solid rgba(255, 255, 255, 0.94);
+		
+			
+
+        }
+
+        .form-heading {
+            font-size: 19px;
+            padding-bottom: 10px;
+			 
+			font-weight:500;
+			color:#2073d9;
+			padding:0;
+			
+        }
+
+        .cta {
+            width: 100%;
+    padding: 10px;
+    font-size: 1.1em;
+    background-color: #2073d9;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+	box-shadow: inset 0px  0px 0px #814019;
+        }
+		
+		.cta:hover{
+		background-color: #1b5eb1;
+		}
+
+
+
+        .footer-div {
+            padding: 20px 10px;
+            text-align: center;
+        }
+
+        .footer-div a {
+             color: black;
+			text-decoration:underline;
+        }
+		     .footer-div p{
+             color: black;
+		
+        }
+		
+
+
+        @media only screen and (max-width: 600px) {
+		
+			.company_logo{
+			width:200px;
+			}
+            section {
+                padding: 1em 0em;
+            }
+
+           
+        }
+
+
+
+
+
+        /*end */
+		
+		
+		h3{
+	font-weight: 700;
+    color: #fff;
+    padding: 20px;
+	
+	
+	}
+	
+	p{
+    color: #005456;
+    font-family: Plus Jakarta Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: 0px;
+    line-height: 1.6em;
+    margin-bottom: 1rem;
+
+	}
+	
+	ul{
+    color: #005456;
+    font-family: Plus Jakarta Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: 0px;
+    line-height: 1.6em;
+    margin-bottom: 1rem;
+
+
+	}
+	
+	
+	.formInputCombine>span {
+    display: inline-block;
+    width: 45%;
+    margin: 20px 7px;
+}
+
+ 
+
+
+
+
+
+.col-two{
+display:flex;gap:15px;
+margin-bottom:28px;
+}
+
+.fieldHolder{
+overflow:hidden;
+border-radius:8px;
+	display:flex;align-content: center;align-items: center;
+	   box-shadow: 0px 1px 5px #d3d3d3;
+	   width:100%;
+}
+
+.fieldHolder span{
+	    background: #EEEE;
+    height: 100%;
+    border-right:1px solid #c1c1c1;
+    align-content: center;
+	font-size: 20px;
+    padding: 10px;
+}
+
+
+	li{
+    list-style-image: url("checkmark-small.png");
+    line-height: 2em;
+}
+
+.img-main-back{
+		background-image: url("zoom_anda_1.png");
+		
+		background-size: cover;
+		background-position: top;
+		    min-height: 236px;
+			
+
+		}
+    </style>
+</head>
+
+
+<body>
+
+
+
+<section class="navbar" style="background-color:#fff">
+        <div class="container">
+
+
+          <img src="https://resource.cmofirst.com/whitepaper/check-point-logo-large.png" alt="Logo" class="company_logo">
+			
+						
+
+
+        </div>
+    </section>
+	
+	
+	
+
+
+    <div class="divider">
+    </div>
+	
+	
+		 <section class="banner">
+        <div class="container hero">
+		<div class="text" style="margin-left:23px;">
+				<h2 style="    text-align: left;
+    /* font-size: 17px; */
+    margin-top: 26px;
+    font-weight: 600;
+    ">
+				
+				<strong>Webinar On Demand</strong></h2>
+				<h1 style="text-align: left; margin-top:30px;">Denials, the Hot Topic We Don’t Want </h1>
+				<h4 style="    margin-bottom: 20px;
+    margin-top:30px;
+">Hosted by: </h4>
+				
+				
+
+				<!--<div class="row" style="padding:14px;">
+					<div style="">
+						<h4 style="text-align: left;font-size: 18px;"><strong>Adrienne Moore</strong>
+						<br>Senior Vice President, Finance Banner Health</div></h4>
+						<div style="margin-left:170px;">
+							<h4 style="text-align: left;font-size: 18px;"><strong>Adrienne Moore</strong>
+							<br>Senior Vice President, Finance Banner Health</h4>
+							</div>
+						</div>-->
+						<div class="row">
+      <div data-wow-delay="none" class="wow none col-lg-4 col-sm-12 c1      animated" style="visibility: visible;">
+        
+        <div class="col-inner">
+          
+          <div class="hhs-rich-text-in">
+            <div class="hhs-rich-text">
+              
+              <p style="text-align: left;"><strong>Adrienne Moore<br></strong>Senior Vice President, Finance<br>Banner Health<strong> </strong></p>
+              
+
+
+            </div>
+			
+			
+          </div>
+          </div>
+		     <div class="col-inner">
+          
+          <div class="hhs-rich-text-in">
+            <div class="hhs-rich-text">
+              
+              <p style="text-align: left;"><strong>Adrienne Moore<br></strong>Senior Vice President, Finance<br>Banner Health<strong> </strong></p>
+              
+
+
+            </div>
+			
+			
+          </div>
+          </div>
+		  
+		  
+      </div>
+	  
+	  
+
+      
+        <div data-wow-delay="none" class="wow none col-lg-8 col-sm-12 c2     animated" style="visibility: visible;">
+          
+          <div class="col-inner">
+            
+            <div class="hhs-rich-text-in">
+              <div class="hhs-rich-text">
+                
+                <p><strong>Jonathan Wiik<br></strong>Vice President, Health Insights<br>FinThrive</p>
+                
+                
+              </div>
+            </div>
+            </div>
+			          <div class="col-inner">
+            
+            <div class="hhs-rich-text-in">
+              <div class="hhs-rich-text">
+                
+                <p><strong>Jonathan Wiik<br></strong>Vice President, Health Insights<br>FinThrive</p>
+                
+                
+              </div>
+            </div>
+            </div>
+        </div>
+ 
+ 
+
+      
+      
+      
+        
+    </div>
+			</div>
+			
+							    <p style="margin-left:20px;">
+                                <strong>Register now.</strong><br>
+                                <span style="color: #000080;">Date: Wednesday, June 26, 2024</span><br>
+                                <span style="color: #000080;">Time: 10:00 am PT / 1:00 pm ET</span>
+                            </p>
+
+
+			
+		<!-- 	<div class="thumbnail">
+			<img src="webnar.png" alt="Image"  class=""> 
+			</div> -->
+
+           
+            
+
+
+        </div>
+    </section>
+	
+	
+
+
+
+
+
+
+    <section class="second_section img-main-back">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-7">
+					
+					
+
+
+
+                        <!-- <h1 class="title">How AI-powered phones are changing the modern workplace</h1> -->
+					
+						<br>  
+						
+						  <p style="text-align: left;"><strong>Learning Objectives</strong> </p>
+						
+
+ <ul>
+<li>Assess your current phone system and evaluate how it fits into your
+ overall toolkit </li>
+<li>Understand how your individual apps and platforms work together in
+ today’s communication landscape </li>
+<li>Learn how complementing your phone system with a trusted and reliable,
+ AI-powered platform can future-proof your business and help your teams
+ forge stronger connections.
+</li>
+ 
+
+</ul> 
+
+
+
+				 <p style="text-align: left;"> <strong>Overview</strong></p>
+				 
+<p>The way people work together is constantly evolving. Coordinating across
+different teams and time zones has always been a challenge, and today,
+remote, hybrid, and in-office workers are trying to sync together in new ways.
+While these flexible working styles offer benefits, they also create gaps.<br><br>
+In this ebook, we’ll help you: </p>
+						
+						<!--<p>Zoom Phone &#12434;&#20351;&#29992;&#12377;&#12427;&#12392;&#12289;&#22580;&#25152;&#12420;&#12487;&#12496;&#12452;&#12473;&#12289;&#20685;&#12365;&#26041;&#12434;&#21839;&#12431;&#12378;&#12289;&#23433;&#20840;&#12363;&#12388;&#31777;&#21336;&#12395;&#12467;&#12511;&#12517;&#12491;&#12465;&#12540;&#12471;&#12519;&#12531;&#12364;&#21462;&#12428;&#12289;&#20170;&#12414;&#12391;&#20197;&#19978;&#12398;&#29983;&#29987;&#24615;&#12450;&#12483;&#12503;&#12434;&#23455;&#29694;&#12391;&#12365;&#12414;&#12377;&#12290;</p>
+
+<p>-->
+<p></p>
+
+<!--<ul>
+<li>&#31649;&#29702;&#12398;&#31777;&#32032;&#21270;</li>
+<li>&#20685;&#12365;&#26041;&#12398;&#26368;&#36969;&#21270;</li>
+<li>&#12514;&#12480;&#12531; &#12527;&#12540;&#12463;&#12473;&#12479;&#12452;&#12523;&#12408;&#12398;&#23550;&#24540;</li>
+<li>&#20449;&#38972;&#12398;&#12362;&#12369;&#12427;&#38651;&#35441;&#12471;&#12473;&#12486;&#12512;</li>
+</ul>-->
+
+ 
+ 
+   
+   <br><br>
+	<!--<div>
+						<img align="center" border="0" src="https://resource.ciofirst.com/whitepaper/STORM-Zoom-Video-USA-DE66E1-1.png" alt="" title="" class="thumbnail">
+						</div>-->
+						
+						
+						
+
+
+                        <!-- <img src="https://resource.ciofirst.com/whitepaper/Jfrog_logo.png" alt="Thumbnail" style="width:200px; ">
+			<p style="font-size:12px;">
+			
+			
+			</p> -->
+
+                    </div>
+                    <div class="col-md-5">
+
+
+                        <form id="lead-form" action="STORM-Zoom-Video-USA-DE66E1-1-sendemail.php" method="post" name="registration" novalidate="novalidate">
+
+                            <h3 class="form-heading">Please fill in the form to download</h3>
+							<br>
+
+
+
+                            <input type="hidden" name="camp_id" id="camp_id" value="CIOFirst-STORM-Zoom-Video-USA-DE66E1-1">
+
+
+
+
+
+		   <input type="text" name="firstname" id="firstname" placeholder="First Name " required="">
+   
+		
+<br>		
+<br>
+  <input type="text" name="data[0]" id="lastname" placeholder="Last Name" required="">
+  <br><br>	
+		
+		
+		
+ <input type="email" name="data[1]" id="Business-email" placeholder="Work Email" required="">
+<br><br>	
+
+
+ <input type="text" name="data[2]" placeholder="Company" required="">
+  <br><br>
+
+
+ <!--<input type="text" name="data[3]"  placeholder="従業員数" required="">-->
+ <select id="company_size" name="data[3]" required="">
+										    	<option value="">Company Size</option>
+												<option value="251-500">251-500</option>
+<!-- <option value="251-500">251-500</option>
+<option value="501-1000">501-1000</option>
+<option value="1001-5000">1001-5000</option>
+<option value="5001-10000">5001-10000</option>
+<option value="10001+">10001+</option> -->
+							
+												</select>
+													
+												
+												
+										
+												
+											<br><br>
+ 
+
+ <input type="text" name="data[4]" placeholder="Job Title" required="">
+  <br><br>  
+  <input type="text" name="data[5]" placeholder="Phone" required="">
+  <br><br> 
+  
+
+
+
+
+
+
+
+		
+							
+							
+
+								
+												
+												
+											<!--	<select id="job_role" name="data[2]" required>
+										    	<option value="">Job Role</option>
+												
+												<option value="CEO / CFO / COO">CEO / CFO / COO</option><option value="CTO / CIO / CPO">CTO / CIO / CPO</option><option value="Business Leader (VP, director, manager)">Business Leader (VP, director, manager)</option><option value="Data/BI (officer, VP, director, manager)">Data/BI (officer, VP, director, manager)</option><option value="DevOps (VP, director, manager)">DevOps (VP, director, manager)</option><option value="Enterprise Architect">Enterprise Architect</option><option value="IT / Enterprise Applications (VP, director, manager)">IT / Enterprise Applications (VP, director, manager)</option><option value="Partner Representative">Partner Representative</option><option value="QA / Product (VP, director, manager)">QA / Product (VP, director, manager)</option><option value="Sales Ops / CRM (VP, director, manager, admin)">Sales Ops / CRM (VP, director, manager, admin)</option><option value="SAP Applications / Projects (VP, director, manager)">SAP Applications / Projects (VP, director, manager)</option><option value="Service Management / Delivery (VP, director, manager)">Service Management / Delivery (VP, director, manager)</option><option value="Student">Student</option><option value="Tester / SDET / Test Engineer">Tester / SDET / Test Engineer</option><option value="Testing Center of Excellence (VP, director, manager)">Testing Center of Excellence (VP, director, manager)</option><option value="Transformation Leader">Transformation Leader</option><option value="Other">Other</option>
+												</option>										
+												</select>
+												
+											<br><br>	-->
+
+            	
+								
+					  
+				
+
+
+                          <select id="country" name="data[6]" required="">
+                                <option value="">Country</option>
+								
+								<option value="United States">United States</option><option value="Canada">Canada</option>
+
+<!-- <option value="United Kingdom">United Kingdom</option>
+<option value="United States">United States</option>
+<option value="Australia">Australia</option>
+<option value="Canada">Canada</option>
+<option value="Ireland">Ireland</option>
+<option value="Japan">Japan</option>
+<option value="New Zealand">New Zealand</option> -->
+
+                               
+
+
+
+                            </select>
+							<br><br>
+						 
+
+
+<label style="font-size:13px">What is the biggest challenge you face with your current communication system?</label>
+<select id="cq1" name="data[7]" required="">
+										    	<option value=""></option>
+<option value="Poor quality and reliability">Poor quality and reliability</option><option value="Limited scalability and flexibility">Limited scalability and flexibility</option><option value="Lack of integrations with other tools and platforms">Lack of integrations with other tools and platforms</option><option value="Limited AI capabilities">Limited AI capabilities</option><option value="Security and compliance concerns">Security and compliance concerns</option><option value="Complex system management">Complex system management</option>
+
+												
+												</select>
+												
+											<br><br>	
+											
+											
+
+                            <style>
+                                .mktoFormColCheckbox {
+                                  
+                                }
+								
+								
+								.optin{
+									 
+                                    width: 100%;
+                                    display: flex;
+                                    justify-content: flex-start;
+                                    align-items: flex-start;
+                                   margin-top:22px;
+                                    gap: 8px;
+                                   font-size: 14px;
+    font-weight: 500;
+    color: #262626;
+	line-height:170%;
+									
+								}
+								
+								.optin input[type="checkbox"]{
+								margin-top:5px;
+								}
+                            </style>
+
+
+
+
+
+
+
+                          
+                           
+							
+								<div>
+										<label class="optin check-group">
+											
+											
+											<input type="checkbox" value="optin-yes" name="data[8]" style="width: 20px;">	<p> 
+											
+											
+											By checking this box, I am subscribing to the latest news, resources, and promotions from Zoom. I may unsubscribe at any time.<br>
+											
+											
+I understand that my information with be processed in accordance with [Zoom <a href="https://www.zoom.com/en/trust/privacy/?cms_guid=false&amp;lang=null" target="_BLANK">'s Privacy Statement </a>]* and [3rd Party’s <a href="https://ciofirst.com/privacy-policy" target="_BLANK"> Privacy Policy </a>].
+											
+											
+											
+											
+											
+														
+														</p>
+
+										  
+
+										</label>
+									</div>
+                               
+
+
+
+                        
+
+
+
+
+
+
+                            <input type="submit" value="DOWNLOAD NOW" class="cta">
+							
+							
+							<!-- <p style="margin-top: 25px;"> -->
+							
+							<!-- By submitting this form, you acknowledge the Thomson Reuters group of companies will process vour personal information as described in our <a href="https://www.thomsonreuters.com/en/privacy-statement.html">Privacy Statement</a>, which explains how we collect, use, store, and disclose your personal information, the consequences if you do not provide this information, and the way in which you can access and correct your personal information or submit a complaint. -->
+							<!-- </p> -->
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+    <section style="
+    padding-bottom: 0em;
+" class="footer">
+        <div class="row">
+            <div class="col-sm-12 divider"></div>
+            <div class="col-sm-12 footer-div">
+
+
+                 <img src="https://resource.cmofirst.com/whitepaper/check-point-logo-large.png" alt="CIOFirst" class="logo">
+                <br> <br>
+                <p style="text-align: center;"><span style="font-size: 14px;">&#169;2024 CIOFirst - a brand owned and
+                        operated by WM America. All rights reserved </span></p>
+
+
+                <p style="text-align: center;"><span style="font-size: 14px;">
+
+                        <a href="https://ciofirst.com/privacy-policy">Privacy Policy</a>
+                        &nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://ciofirst.com/unsubscribe/"
+                            target="_blank">Unsubscribe</a>&nbsp;&nbsp;
+
+
+
+                    </span>
+
+                </p>
+
+
+
+
+            </div>
+
+        </div>
+    </section>
+
+
+ 
+
+
+</body></html>
